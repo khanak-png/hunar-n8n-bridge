@@ -1,0 +1,52 @@
+{
+  "name": "hunar-n8n-bridge",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
+```
+- Click **"Commit new file"**
+
+Your GitHub repo now has 3 files: `README.md`, `server.js`, `package.json`. ✅
+
+---
+
+### Part 2 — Deploy on Railway (2 min)
+
+**1.** Go to [railway.app/new](https://railway.app/new) → click **"Deploy from GitHub repo"**
+
+**2.** Authorize Railway to access GitHub → select `hunar-n8n-bridge` repo
+
+**3.** Railway auto-detects Node.js and starts deploying. Wait ~30 seconds.
+
+**4.** Once deployed, click your project → go to **"Variables"** tab → click **"New Variable"** → add:
+
+| Variable name | Value |
+|---|---|
+| `N8N_WEBHOOK_URL` | `https://your-instance.app.n8n.cloud/webhook/your-path` |
+
+Railway restarts automatically after you save the variable.
+
+**5.** Click **"Settings"** tab → scroll to **"Domains"** → click **"Generate Domain"**
+
+You'll get a URL like:
+```
+https://hunar-n8n-bridge-production.up.railway.app
+```
+
+---
+
+### Part 3 — Verify and connect to Hunar (1 min)
+
+**Test it's alive** — open this in your browser:
+```
+https://hunar-n8n-bridge-production.up.railway.app/health
